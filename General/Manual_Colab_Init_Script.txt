@@ -1,0 +1,13 @@
+from google.colab import drive
+drive.mount('/gdrive')
+
+import os
+import sys
+
+for root, dirs, files in os.walk('/gdrive', topdown=False):
+  for name in dirs:
+      if name.lower() == "lsda":  # Assumes folder named 'LSDA' to exsist, and contains the repo and data
+        sys.path.append(os.path.join(root, name))
+
+
+from General.Paths import Data_Path
